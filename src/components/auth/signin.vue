@@ -25,6 +25,9 @@
 </template>
 
 <script>
+  import axios from '../../axios-auth'
+  import { FIREBASE_API_KEY } from '../../../firebase-config'
+
   export default {
     data () {
       return {
@@ -39,6 +42,13 @@
           password: this.password,
         }
         console.log(formData)
+        axios.post(`/verifyPassword?key=${ FIREBASE_API_KEY }`, {
+          email: formData.email,
+          password: formData.password,
+          returnSecureToken: true
+        })
+          .then(res => console.log(res))
+          .catch(error => console.log(error))
       }
     }
   }
