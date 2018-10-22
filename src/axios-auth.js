@@ -1,11 +1,9 @@
 import axios from 'axios'
 
-import { FIREBASE_URL } from '../firebase-config'
+import { FIREBASE_ENDPOINT } from '../firebase-config'
 
 const instance = axios.create({
-  baseURL: FIREBASE_URL
+  baseURL: FIREBASE_ENDPOINT.signupNewUser
 })
-
-instance.defaults.headers.common['SOMETHING'] = 'something'
 
 export default instance
