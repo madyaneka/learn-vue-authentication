@@ -18,11 +18,9 @@ const routes = [
     path: '/dashboard',
     component: DashboardPage,
     beforeEnter(to, from, next) {
-      if (store.state.idToken) {
-        next()
-      } else {
-        next('/signin')
-      }
+      setTimeout(() => {
+        !store.state.idToken ? next('/signin') : next()
+      }, 0)
     }
   }
 ]
